@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-    // 4) Création des 2 objets obligatoires
+// tableau chamallows seul
     const chamallows = {
         nom: "Chamallows",
         prix: 2.28,
@@ -8,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         unite: "g",
         fichier: "images/chamallows.jpg"
     };
-
+// tableau dragibus seul
     const dragibus = {
         nom: "Dragibus",
         prix: 1.64,
@@ -16,14 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
         unite: "g",
         fichier: "images/dragibus.jpg"
     };
-
-    // Stockage pour accès facile
+//tableau recap de tous les bonbons
     const produits = {
         "chamallows": chamallows,
         "dragibus": dragibus
     };
 
-    // 5) Fonction pour mettre à jour l'affichage des calculs
+
     function mettreAJourDetail(type) {
         const produit = produits[type];
         const quantite = parseInt(document.getElementById('qty-' + type).value);
@@ -43,25 +41,26 @@ document.addEventListener('DOMContentLoaded', function() {
             divInfo.style.display = "none";
         }
     }
-
-    // Gestion des clics (Réutilisation de la logique précédente)
+//todo changer les 2 methodes doivent passe par des classes pas des ID
+    //Gestion bouton +
     document.querySelectorAll('.btn-plus').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function() { //Quand on clique on ajoute 1
             const type = this.getAttribute('data-type');
             const input = document.getElementById('qty-' + type);
             input.value = parseInt(input.value) + 1;
-            mettreAJourDetail(type); // Mise à jour auto
+            mettreAJourDetail(type);
         });
     });
 
+    //Gestion bouton -
     document.querySelectorAll('.btn-moins').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function() { //Quand on clique on enleve 1 mais pas si c'est a 0
             const type = this.getAttribute('data-type');
             const input = document.getElementById('qty-' + type);
             let valeur = parseInt(input.value);
             if (valeur > 0) {
                 input.value = valeur - 1;
-                mettreAJourDetail(type); // Mise à jour auto
+                mettreAJourDetail(type);
             }
         });
     });
