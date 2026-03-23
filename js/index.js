@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 //tableau recap de tous les bonbons
     const produits = {
         "chamallows": chamallows,
-        "dragibus": dragibus
+        "dragibus": dragibus,
     };
 
 
@@ -64,4 +64,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    let
 });
