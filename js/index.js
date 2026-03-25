@@ -36,15 +36,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p>${quantite} paquets de ${produit.nom}</p>
                 <p>Prix total = ${prixTotal} €</p>
                 <p>Poids total = ${poidsTotal} ${produit.unite}</p>
+                recapCommande();
             `;
         } else {
             divInfo.style.display = "none";
         }
     }
-//todo changer les 2 methodes doivent passe par des classes pas des ID
-    //Gestion bouton +
+
     document.querySelectorAll('.btn-plus').forEach(button => {
-        button.addEventListener('click', function() { //Quand on clique on ajoute 1
+        button.addEventListener('click', function() {
             const type = this.getAttribute('data-type');
             const input = document.getElementById('qty-' + type);
             input.value = parseInt(input.value) + 1;
@@ -52,9 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    //Gestion bouton -
+
     document.querySelectorAll('.btn-moins').forEach(button => {
-        button.addEventListener('click', function() { //Quand on clique on enleve 1 mais pas si c'est a 0
+        button.addEventListener('click', function() {
             const type = this.getAttribute('data-type');
             const input = document.getElementById('qty-' + type);
             let valeur = parseInt(input.value);
@@ -64,4 +64,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
 });
