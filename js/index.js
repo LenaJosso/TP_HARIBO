@@ -14,6 +14,10 @@ let dragibus = {
     image: "images/dragibus.jpg"
 };
 
+//normalement pour améliorer faudrait directement mettre les obj dans le tableaux pour eviter les
+// repetition mais pas le temps
+// faudrait tout faire avec classe pour mettre en correlation
+
 let bonbons = [chamallows, dragibus];
 function afficherPrixUnite() {
     let elements = document.getElementsByClassName('prixunite');
@@ -21,13 +25,7 @@ function afficherPrixUnite() {
         elements[i].innerHTML = "Prix à l'unité : " + bonbons[i].prix + " €";
     }
 }
-function afficherImages() {
-    let images = document.getElementsByClassName("produit-img");
-    for (let i = 0; i < bonbons.length; i++) {
-        images[i].src = bonbons[i].image;
-        images[i].alt = bonbons[i].nom;
-    }
-}
+
 function calculerDetails() {
     for (let i = 0; i < bonbons.length; i++) {
         let p = bonbons[i];
@@ -51,10 +49,10 @@ function partieCommande() {
     }
     document.getElementById('prixTotal').innerHTML = "Prix Total : " + totalPrix.toFixed(2) + " €";
     document.getElementById('PoidsTotal').innerHTML = "Poids Total : " + totalPoids + " g";
-    document.getElementById('paquetschamallows').innerHTML = chamallows.quantite + " paquets de " + chamallows.nom;
-    document.getElementById('prixtotalchamallows').innerHTML = "Prix Total : " + (chamallows.quantite * chamallows.prix).toFixed(2) + " €";
-    document.getElementById('poidstotalchamallows').innerHTML = "Poids Total : " + (chamallows.quantite * chamallows.poids) + " g";
-    document.getElementById('paquetsdragibus').innerHTML = dragibus.quantite + " paquets de " + dragibus.nom;
+    document.getElementById('paquetChamallows').innerHTML = chamallows.quantite + " paquets de " + chamallows.nom;
+    document.getElementById('prixTotCham').innerHTML = "Prix Total : " + (chamallows.quantite * chamallows.prix).toFixed(2) + " €";
+    document.getElementById('poidsTotCham').innerHTML = "Poids Total : " + (chamallows.quantite * chamallows.poids) + " g";
+    document.getElementById('paquetDragibus').innerHTML = dragibus.quantite + " paquets de " + dragibus.nom;
     document.getElementById('prixtotaldragibus').innerHTML = "Prix Total : " + (dragibus.quantite * dragibus.prix).toFixed(2) + " €";
     document.getElementById('poidstotaldragibus').innerHTML = "Poids Total : " + (dragibus.quantite * dragibus.poids) + " g";
 }
@@ -63,7 +61,7 @@ let btnPlus1 = document.getElementById('plusChamallows');
 let btnMoins1 = document.getElementById('moinsChamallows');
 let text1 = document.getElementById('text1');
 
-btnPlus1.onclick = function () {
+btnPlus1.onclick = function () { //Changement avec on click et pas addEventListener
     chamallows.quantite++;
     text1.value = chamallows.quantite;
     calculerDetails();
@@ -83,7 +81,7 @@ let btnPlus2 = document.getElementById('plusDragibus');
 let btnMoins2 = document.getElementById('moinsDragibus');
 let text2 = document.getElementById('text2');
 
-btnPlus2.onclick = function () {
+btnPlus2.onclick = function () {//Changement avec on click et pas addEventListener
     dragibus.quantite++;
     text2.value = dragibus.quantite;
     calculerDetails();
